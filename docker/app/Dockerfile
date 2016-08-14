@@ -9,6 +9,8 @@ MAINTAINER "Tom" <nospam@invalid>
 # update rdoc to avoid https://github.com/sinatra/sinatra/issues/1089
 RUN yum -y install ruby ruby-devel rubygems openssl-devel gcc gcc-c++ make ; yum clean all; \ 
         gem update rdoc; gem install redis sinatra thin
+#ENV REDIS_HOST=127.0.0.1
+#ENV REDIS_PORT=6379
 EXPOSE 4567
 COPY files/ /
 CMD ["ruby", "/opt/webapp/hello-world.rb"]
