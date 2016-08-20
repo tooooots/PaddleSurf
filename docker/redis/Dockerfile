@@ -20,4 +20,4 @@ COPY files/ /
 EXPOSE 6379
 WORKDIR /data
 # TODO: start Redis with sentinel http://redis.io/topics/sentinel
-CMD ["redis-server", "/etc/redis/redis.conf"]
+CMD ["redis-server", "/etc/redis/redis.conf", "--protected-mode no"]
