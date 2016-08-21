@@ -2,7 +2,7 @@
 
 ###Description:
 
-Sample setup of a Ruby app with Sinatra/Thin connecting to a Redis backend using Docker and Kubernetes on GCE.
+Simple setup of a Ruby app with Sinatra/Thin connecting to a Redis backend using Docker and Kubernetes on GCE.
 Loadbalancing is done with k8s Service, discovery with kube-dns.
 
 ![diagram](paddlesurf.png)
