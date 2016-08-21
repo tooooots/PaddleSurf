@@ -31,4 +31,6 @@ spec:
         env:
         - name: REDIS_HOST
           value: redis
+        - name: REDIS_PORT
+          value: "6379"
 
