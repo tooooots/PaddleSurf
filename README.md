@@ -51,7 +51,6 @@ This is more complex and only useful if we need to manage more services than jus
 `$ terraform apply`
 - get the endpoint url:
 `$ terraform show`
-`endpoint = 1.2.3.4`
 We can now test the URL with `curl -kv https://1.2.3.4`
 
 
@@ -71,12 +70,14 @@ $ kubectl create -f k8s/redis.yaml
 $ kubectl create -f k8s/app.yaml
 $ kubectl get services
 NAME         CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
-app          10.3.255.86   1.2.3.4       4567/TCP   27s
+app          10.3.255.86   1.2.3.4       4567/TCP   1m
 kubernetes   10.3.240.1    <none>        443/TCP    6h
 redis        10.3.242.37   <nodes>       6379/TCP   1m
 $ kubectl get pods
 $ kubectl get deployments
-$ kubectl get 
+$ kubectl get ep app
+NAME      ENDPOINTS                     AGE
+app       10.0.0.4:4567,10.0.1.6:4567   1m
 ```
 You can use `kubectl logs <pod>` to see the output or `kubectl describe pods`
 Or connect to your kubernetes cluster webUI directly:
@@ -87,4 +88,13 @@ $ kubectl proxy
 $ open http://localhost:8001/ui
 ```
 The application connects to redis using *redis* host populated with the *REDIS_HOST* env variable, using kube-dns.
+
+###Access our application
+
+- Get the external IP address and port of our loadbalanced application:
+```bash$ kubectl get services app
+NAME         CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+app          10.3.255.86   1.2.3.4       4567/TCP   1m
+```
+and connect using `curl http://1.2.3.4:4567`.
 
