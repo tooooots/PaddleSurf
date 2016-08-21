@@ -92,7 +92,8 @@ The application connects to redis using *redis* host populated with the *REDIS_H
 ###Access our application
 
 - Get the external IP address and port of our loadbalanced application:
-```bash$ kubectl get services app
+```bash
+$ kubectl get services app
 NAME         CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
 app          10.3.255.86   1.2.3.4       4567/TCP   1m
 ```
